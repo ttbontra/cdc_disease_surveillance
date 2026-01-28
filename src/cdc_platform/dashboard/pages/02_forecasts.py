@@ -147,9 +147,9 @@ def render():
         {
             "date": hist_idx,
             "observed": g["cases"].astype(float).values,
-            "q10": out["history"][0.1],
-            "q50": out["history"][0.5],
-            "q90": out["history"][0.9],
+            "q10 (best case)": out["history"][0.1],
+            "q50 (most likely)": out["history"][0.5],
+            "q90 (worst case)": out["history"][0.9],
         }
     ).set_index("date")
 
@@ -157,16 +157,16 @@ def render():
         {
             "date": fut_idx,
             "observed": [None] * len(fut_idx),
-            "q10": out["forecast"][0.1],
-            "q50": out["forecast"][0.5],
-            "q90": out["forecast"][0.9],
+            "q10 (best case)": out["forecast"][0.1],
+            "q50 (most likely)": out["forecast"][0.5],
+            "q90 (worst case)": out["forecast"][0.9],
         }
     ).set_index("date")
 
     chart_df = pd.concat([hist_df, fut_df], axis=0)
 
     # Streamlit line_chart doesn't do shaded bands; we show q10/q50/q90 + observed
-    st.line_chart(chart_df[["observed", "q10", "q50", "q90"]])
+    st.line_chart(chart_df[["observed", "q10 (best case)", "q50 (most likely)", "q90 (worst case)"]])
 
     st.caption("Bands represent uncertainty from sampling transmission rate (beta) around the calibrated SEIR model.")
 
