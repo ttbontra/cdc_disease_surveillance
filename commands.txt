@@ -1,0 +1,4 @@
+Run the Streamlit dashboard application
+
+    "streamlit run src/cdc_platform/dashboard/app.py"
+
