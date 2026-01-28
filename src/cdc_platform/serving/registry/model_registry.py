@@ -9,3 +9,9 @@ def registry_dir() -> Path:
 
 def risk_model_path() -> Path:
     return registry_dir() / "risk_model.json"
+
+def ml_artifacts_path() -> Path:
+    return registry_dir() / "ml_artifacts.joblib"
+
+def bayes_artifacts_path() -> Path:
+    return registry_dir() / "bayes_hierarchical.joblib"

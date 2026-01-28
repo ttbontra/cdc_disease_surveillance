@@ -5,6 +5,8 @@ from .commands.build_features import features_cmd
 from .commands.train_models import train_risk_cmd
 from .commands.serve import serve_cmd
 from .commands.run_backtests import run_backtests_cmd
+from .commands.train_ml import train_ml_cmd
+from .commands.train_bayes import train_bayes_cmd
 
 app = typer.Typer(add_completion=False)
 
@@ -13,6 +15,8 @@ app.command("build-features")(features_cmd)
 app.command("train-risk")(train_risk_cmd)
 app.command("serve")(serve_cmd)
 app.command("run-backtests")(run_backtests_cmd)
+app.command("train-ml")(train_ml_cmd)
+app.command("train-bayes")(train_bayes_cmd)
 def main():
     app()
 

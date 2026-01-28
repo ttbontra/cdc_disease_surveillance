@@ -5,6 +5,8 @@ src/cdc_platform/cli/commands/build_features.py
 src/cdc_platform/cli/commands/ingest.py
 src/cdc_platform/cli/commands/run_backtests.py
 src/cdc_platform/cli/commands/serve.py
+src/cdc_platform/cli/commands/train_bayes.py
+src/cdc_platform/cli/commands/train_ml.py
 src/cdc_platform/cli/commands/train_models.py
 src/cdc_platform/common/dates.py
 src/cdc_platform/common/io.py
@@ -36,6 +38,7 @@ src/cdc_platform/data/ingest/pull_mobility.py
 src/cdc_platform/data/ingest/pull_wastewater.py
 src/cdc_platform/data/registry/dataset_manifest.py
 src/cdc_platform/data/registry/lineage.py
+src/cdc_platform/modeling/bayes/hierarchical_growth.py
 src/cdc_platform/modeling/early_warning/alert_rules.py
 src/cdc_platform/modeling/early_warning/anomalies.py
 src/cdc_platform/modeling/early_warning/changepoints.py
@@ -63,6 +66,8 @@ src/cdc_platform/serving/jobs/hourly_alerts.py
 src/cdc_platform/serving/jobs/nightly_pipeline.py
 src/cdc_platform/serving/jobs/retrain_weekly.py
 src/cdc_platform/serving/registry/artifacts.py
+src/cdc_platform/serving/registry/artifacts_bayes.py
+src/cdc_platform/serving/registry/artifacts_ml.py
 src/cdc_platform/serving/registry/model_registry.py
 src/cdc_surveillance_forecasting_platform.egg-info/PKG-INFO
 src/cdc_surveillance_forecasting_platform.egg-info/SOURCES.txt

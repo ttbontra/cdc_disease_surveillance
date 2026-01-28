@@ -18,4 +18,21 @@ def run_nightly_pipeline(start_date: str, end_date: str) -> pd.DataFrame:
     cases = simple_delay_adjustment(cases, value_col="cases", delay_days=settings.nowcast_reporting_delay_days)
 
     master = build_master_table(cases, hosp, ww, mob)
+    try:
+        from ..registry.model_registry import ml_artifacts_path
+        from ..registry.artifacts_ml import load_ml_artifacts
+        from ...modeling.risk_scoring.sklearn_models import score_latest
+
+        path = ml_artifacts_path()
+        if path.exists():
+            artifacts = load_ml_artifacts(path)
+            latest_scores = score_latest(master, artifacts)
+            # Join latest scores back onto master for the latest day only
+            # We'll merge on region and date, leaving historical rows unchanged.
+            master = master.merge(latest_scores, on=["date", "region"], how="left")
+    except Exception:
+        # Keep pipeline resilient; ML is optional.
+        pass
+
     return master
+
